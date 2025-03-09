@@ -1,25 +1,11 @@
 {
-    "printWidth": 120,
-    "tabWidth": 2,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
+    "singleQuote": true,
     "trailingComma": "all",
+    "semi": true,
     "arrowParens": "always",
-    "endOfLine": "auto",
-    "plugins": [
-        "./node_modules/prettier-plugin-sort-imports/dist/index.js",
-        "prettier-plugin-tailwindcss"
-    ],
-    "sortingMethod": "alphabetical",
-    "importTypeOrder": [
-        "NPMPackages",
-        "localImports"
-    ],
-    "newlineBetweenTypes": true,
-    "tailwindConfig": "./tailwind.config.js",
-    "tailwindFunctions": [
-        "clsx"
-    ],
-    "tailwindPreserveDuplicates": true
-}
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "printWidth": 120,
+    "endOfLine": "auto"
+  }
+  
