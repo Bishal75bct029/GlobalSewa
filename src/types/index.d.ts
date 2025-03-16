@@ -35,7 +35,7 @@ declare type User = {
   city: string;
   state: string;
   postalCode: string;
-  dateOfBirth: string;
+  dateOfBirth: date;
   ssn: string;
 };
 
@@ -44,6 +44,10 @@ declare type NewUserParams = {
   email: string;
   name: string;
   password: string;
+};
+
+declare type AuthType = {
+  type: 'sign-in' | 'sign-up';
 };
 
 declare type Account = {

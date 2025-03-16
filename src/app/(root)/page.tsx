@@ -1,9 +1,9 @@
-import DoughnutChart from '@/components/DoughnutChart';
 import Header from '@/components/Header';
+import RightSidebar from '@/components/RightSideBar';
 import TotalBalanceBox from '@/components/TotalBalanceBox';
 
 const Home = () => {
-  const user = { firstName: 'Bishal' };
+  const user = { firstName: 'Bishal', email: 'email', lastName: 'LC' } as User;
 
   return (
     <section className="home">
@@ -16,6 +16,7 @@ const Home = () => {
         />
         <TotalBalanceBox accounts={[]} totalBanks={1} totalCurrentBalance={1000} />
       </div>
+      <RightSidebar user={user} banks={[]} transactions={[]} />
     </section>
   );
 };

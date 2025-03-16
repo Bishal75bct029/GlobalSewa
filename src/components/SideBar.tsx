@@ -3,7 +3,6 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
 const navLinks = [
@@ -35,9 +34,7 @@ const navLinks = [
 ];
 
 const SideBar = () => {
-  const pathname = usePathname();
   const [isActive, setisActive] = useState<string>('/');
-  console.log(isActive, pathname, 'he');
 
   return (
     <section className="sidebar">
@@ -52,22 +49,22 @@ const SideBar = () => {
           />
           <h1 className="sidebar-logo">Horizon</h1>
         </Link>
-        {navLinks.map((navLink, idx) => {
+        {navLinks.map(({ route, imagePath, label }, idx) => {
           return (
             <Link
-              href={navLink.route}
+              href={route}
               key={idx}
-              onClick={() => setisActive(navLink.route)}
-              className={cn('sidebar-link text-16', isActive === navLink.route && 'bg-bank-gradient')}
+              onClick={() => setisActive(route)}
+              className={cn('sidebar-link text-16', isActive === route && 'bg-bank-gradient')}
             >
               <Image
-                src={navLink.imagePath}
+                src={imagePath}
                 height={30}
                 width={30}
                 alt=""
-                className={cn(isActive === navLink.route && 'brightness-[3] invert-0')}
+                className={cn(isActive === route && 'brightness-[3] invert-0')}
               />
-              <span className={cn('sidebar-label', isActive === navLink.route && '!text-white')}>{navLink.label}</span>
+              <span className={cn('sidebar-label', isActive === route && '!text-white')}>{label}</span>
             </Link>
           );
         })}
