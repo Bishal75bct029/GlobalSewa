@@ -39,8 +39,8 @@ const MobileNav = () => {
         <SheetContent side="left" className="border-none bg-white">
           <SheetTitle>
             <Link href="/" className="cursor-pointer flex items-center gap-1 px-4 mt-4">
-              <Image src="/icons/logo.svg" width={34} height={34} alt="Horizon logo" />
-              <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Horizon</h1>
+              <Image src="/icons/logo.png" width={44} height={44} alt="GlobalSewa logo" />
+              <h1 className=" font-ibm-plex-serif font-bold text-black-1 text-[2rem]">GlobalSewa</h1>
             </Link>
           </SheetTitle>
 

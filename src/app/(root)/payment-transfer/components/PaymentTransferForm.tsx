@@ -11,17 +11,16 @@ import { createTransfer } from '@/lib/actions/dwolla.actions';
 import { createTransaction } from '@/lib/actions/transaction.actions';
 import { getBank, getBankByAccountId } from '@/lib/actions/user.actions';
 import { decryptId } from '@/lib/utils';
-
-import { BankDropdown } from './BankDropDown';
-import { Button } from './ui/button';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './ui/form';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
+import { BankDropdown } from '.';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const formSchema = z.object({
   email: z.string().email('Invalid email address'),
   name: z.string().min(4, 'Transfer note is too short'),
-  amount: z.string().min(4, 'Amount is too short'),
+  amount: z.string().min(4, 'Amount must be in decimal'),
   senderBank: z.string().min(4, 'Please select a valid bank account'),
   sharableId: z.string().min(8, 'Please select a valid sharable Id'),
 });

@@ -11,11 +11,12 @@ export default function AuthLayout({
       <div className="auth-asset">
         <div>
           <Image
-            src="/icons/auth-image.svg"
+            src="/icons/authBg.png"
             alt="Auth image"
-            width={500}
-            height={500}
-            className="rounded-l-xl object-contain"
+            width={900}
+            height={1400}
+            className="rounded-l-xl border-2 border-blue-500 "
+            style={{ width: '900px', height: '500px' }}
           />
         </div>
       </div>

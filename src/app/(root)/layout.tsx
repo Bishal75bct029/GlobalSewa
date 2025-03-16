@@ -14,7 +14,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       <SideBar user={user} />
       <div className="flex size-full flex-col">
         <div className="root-layout">
-          <Image src="/icons/logo.svg" width={30} height={30} alt="logo" />
+          <Image src="/icons/logo.png" width={40} height={40} alt="logo" />
           <div className="md:hidden">
             <MobileNav />{' '}
           </div>

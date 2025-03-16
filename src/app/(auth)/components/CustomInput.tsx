@@ -1,13 +1,13 @@
 import React from 'react';
-import { FormControl, FormField, FormLabel, FormMessage } from './ui/form';
-import { Input } from './ui/input';
+import { FormControl, FormField, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
 import { Control, FieldPath } from 'react-hook-form';
 import { z } from 'zod';
 import { signInSchema, signUpSchema } from '@/lib/authFormSchema';
 import { cn } from '@/lib/utils';
 
-interface CustomInput extends React.ComponentProps<'input'> {
+interface CustomInputProps extends React.ComponentProps<'input'> {
   control: Control<z.infer<typeof signInSchema | typeof signUpSchema>>;
   name: FieldPath<z.infer<typeof signInSchema | typeof signUpSchema>>;
   label: string;
@@ -15,7 +15,7 @@ interface CustomInput extends React.ComponentProps<'input'> {
   date?: boolean;
 }
 
-const CustomInput = ({ control, name, label, className, placeholder, onChange, date, ...props }: CustomInput) => {
+const CustomInput = ({ control, name, label, className, placeholder, onChange, date, ...props }: CustomInputProps) => {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value;
 

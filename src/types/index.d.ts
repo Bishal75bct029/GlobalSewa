@@ -206,6 +206,7 @@ declare interface TotalBalanceBoxProps {
 }
 
 declare interface FooterProps {
+  type: 'desktop' | 'mobile';
   user: User;
 }
 

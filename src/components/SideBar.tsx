@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import PlaidLink from './PlaidLink';
 import { usePathname } from 'next/navigation';
+import Footer from './Footer';
 
 const navLinks = [
   {
@@ -42,16 +43,10 @@ const SideBar = ({ user }: SiderbarProps) => {
 
   return (
     <section className="sidebar">
-      <nav className="flex flex-col gap-4">
-        <Link href={'/'} className="flex gap-2 mb-16 items-center px-4">
-          <Image
-            src="/icons/logo.svg"
-            width={34}
-            height={34}
-            alt="Horizon logo"
-            className="size-[24px] max-xl:size-14"
-          />
-          <h1 className="sidebar-logo">Horizon</h1>
+      <nav className="flex flex-col gap-4 mt-6">
+        <Link href={'/'} className="flex gap-2 mb-[2.5rem] items-center px-4">
+          <Image src="/icons/logo.png" width={34} height={34} className="max-xl:size-[2.5rem]" alt="Horizon logo" />
+          <h1 className="sidebar-logo !text-[2rem]">GlobalSewa</h1>
         </Link>
         {navLinks.map(({ route, imagePath, label }, idx) => {
           console.log(isActive, route, 'route not equal');
@@ -75,6 +70,7 @@ const SideBar = ({ user }: SiderbarProps) => {
         })}
         <PlaidLink user={user} />
       </nav>
+      <Footer type="desktop" user={user} />
     </section>
   );
 };

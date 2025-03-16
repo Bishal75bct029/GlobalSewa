@@ -1,6 +1,5 @@
 import React from 'react';
-import AnimatedCounter from './AnimatedCounter';
-import DoughnutChart from './DoughnutChart';
+import { AnimatedCounter, DoughnutChart } from '.';
 
 const TotalBalanceBox = ({ accounts = [], totalBanks, totalCurrentBalance }: TotalBalanceBoxProps) => {
   return (
