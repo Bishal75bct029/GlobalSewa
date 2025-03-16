@@ -11,9 +11,10 @@ import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { signInSchema, signUpSchema } from '@/lib/authFormSchema';
-import { signIn, signUp } from '@/lib/actions/userActions';
+import { signIn, signUp } from '@/lib/actions/user.actions';
 import CustomInput from './CustomInput';
 import { Form } from './ui/form';
+import PlaidLink from './PlaidLink';
 
 const AuthForm = ({ type }: AuthType) => {
   const router = useRouter();
@@ -64,7 +65,9 @@ const AuthForm = ({ type }: AuthType) => {
         </div>
       </header>
       {user ? (
-        <div className="flex flex-col gap-4">{/* <PlaidLink user={user} variant="primary" /> */}</div>
+        <div className="flex flex-col gap-4">
+          <PlaidLink user={user} variant="primary" />{' '}
+        </div>
       ) : (
         <>
           <Form {...form}>
@@ -129,7 +132,13 @@ const AuthForm = ({ type }: AuthType) => {
                 placeholder="Enter your email"
               />
 
-              <CustomInput control={form.control} name="password" label="Password" placeholder="Enter your password" />
+              <CustomInput
+                control={form.control}
+                type="password"
+                name="password"
+                label="Password"
+                placeholder="Enter your password"
+              />
 
               <div className="flex flex-col gap-4">
                 <Button type="submit" disabled={isLoading} className="form-btn">

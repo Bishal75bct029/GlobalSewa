@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import PlaidLink from './PlaidLink';
 
 const navLinks = [
   {
@@ -33,7 +34,7 @@ const navLinks = [
   // },
 ];
 
-const SideBar = () => {
+const SideBar = ({ user }: SiderbarProps) => {
   const [isActive, setisActive] = useState<string>('/');
 
   return (
@@ -68,6 +69,7 @@ const SideBar = () => {
             </Link>
           );
         })}
+        <PlaidLink user={user} />
       </nav>
     </section>
   );
