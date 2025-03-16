@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import PlaidLink from './PlaidLink';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   {
@@ -35,7 +36,9 @@ const navLinks = [
 ];
 
 const SideBar = ({ user }: SiderbarProps) => {
-  const [isActive, setisActive] = useState<string>('/');
+  const pathname = usePathname();
+  const lastSegment = pathname.split('?')[0].split('/').filter(Boolean).pop();
+  const [isActive, setisActive] = useState<string>(lastSegment ?? '/');
 
   return (
     <section className="sidebar">
@@ -51,12 +54,13 @@ const SideBar = ({ user }: SiderbarProps) => {
           <h1 className="sidebar-logo">Horizon</h1>
         </Link>
         {navLinks.map(({ route, imagePath, label }, idx) => {
+          console.log(isActive, route, 'route not equal');
           return (
             <Link
               href={route}
               key={idx}
               onClick={() => setisActive(route)}
-              className={cn('sidebar-link text-16', isActive === route && 'bg-bank-gradient')}
+              className={cn('sidebar-link text-16', isActive.includes(route) && 'bg-bank-gradient')}
             >
               <Image
                 src={imagePath}
@@ -65,7 +69,7 @@ const SideBar = ({ user }: SiderbarProps) => {
                 alt=""
                 className={cn(isActive === route && 'brightness-[3] invert-0')}
               />
-              <span className={cn('sidebar-label', isActive === route && '!text-white')}>{label}</span>
+              <span className={cn('sidebar-label', isActive.includes(route) && '!text-white')}>{label}</span>
             </Link>
           );
         })}

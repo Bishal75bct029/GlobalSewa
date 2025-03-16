@@ -30,13 +30,11 @@ const AuthForm = ({ type }: AuthType) => {
 
   const onSubmit = async (data: z.infer<typeof signInSchema | typeof signUpSchema>) => {
     try {
-      console.log('hot');
       setIsLoading(true);
       if (type === 'sign-in') {
         const response = await signIn({ ...data });
         if (response) router.push('/');
       } else {
-        console.log({ ...data });
         const newUser = await signUp({ ...data } as z.infer<typeof signUpSchema>);
         setUser(newUser);
       }

@@ -7,10 +7,9 @@ import { getLoggedInUser } from '@/lib/actions/user.actions';
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
-
-  const user = await getLoggedInUser();
+  const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({
-    userId: user.$id,
+    userId: loggedIn.$id,
   });
 
   if (!accounts) return;
@@ -19,22 +18,25 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
 
   const account = await getAccount({ appwriteItemId });
-  console.log(account, accountsData);
 
   return (
     <section className="home">
       <div className="home-content">
-        <Header
-          type="greeting"
-          userFirstName={user.firstName}
-          title="Welcome"
-          subtext="Access and manage your account and transaction efficiently"
-        />
-        <TotalBalanceBox
-          accounts={accountsData}
-          totalBanks={accounts?.totalBanks}
-          totalCurrentBalance={accounts?.totalCurrentBalance}
-        />
+        <header className="home-header">
+          <Header
+            type="greeting"
+            title="Welcome"
+            userFirstName={loggedIn.firstName}
+            subtext="Access and manage your account and transactions efficiently."
+          />
+
+          <TotalBalanceBox
+            accounts={accountsData}
+            totalBanks={accounts?.totalBanks}
+            totalCurrentBalance={accounts?.totalCurrentBalance}
+          />
+        </header>
+
         <RecentTransactions
           accounts={accountsData}
           transactions={account?.transactions}
@@ -42,7 +44,8 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           page={currentPage}
         />
       </div>
-      <RightSidebar user={user} banks={accountsData?.slice(0, 2)} transactions={[]} />
+
+      <RightSidebar user={loggedIn} transactions={account?.transactions} banks={accountsData?.slice(0, 2)} />
     </section>
   );
 };

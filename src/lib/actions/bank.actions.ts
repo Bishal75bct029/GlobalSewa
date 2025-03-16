@@ -1,9 +1,9 @@
 'use server';
 
 import { CountryCode } from 'plaid';
-
 import { plaidClient } from '../plaid';
 import { parseStringify } from '../utils';
+
 import { getTransactionsByBankId } from './transaction.actions';
 import { getBanks, getBank } from './user.actions';
 
@@ -109,7 +109,6 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
     );
 
-    console.log(allTransactions, 'all transactions here');
     return parseStringify({
       data: account,
       transactions: allTransactions,
@@ -145,6 +144,8 @@ export const getTransactions = async ({ accessToken }: getTransactionsProps) => 
     while (hasMore) {
       const response = await plaidClient.transactionsSync({
         access_token: accessToken,
+        count: 100,
+        cursor: '',
       });
 
       const data = response.data;
@@ -166,7 +167,7 @@ export const getTransactions = async ({ accessToken }: getTransactionsProps) => 
     }
 
     return parseStringify(transactions);
-  } catch (error) {
-    console.error('An error occurred while getting the accounts:', error);
+  } catch (error: any) {
+    console.error('An error occurred while getting the accounts:', JSON.stringify(error));
   }
 };
