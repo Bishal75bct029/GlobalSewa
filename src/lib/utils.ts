@@ -158,7 +158,6 @@ export function countTransactionCategories(transactions: Transaction[]): Categor
 
   // Sort the aggregatedCategories array by count in descending order
   aggregatedCategories.sort((a, b) => b.count - a.count);
-  console.log(transactions, 'aggregated');
 
   return aggregatedCategories;
 }

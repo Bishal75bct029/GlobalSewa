@@ -49,7 +49,6 @@ const SideBar = ({ user }: SiderbarProps) => {
           <h1 className="sidebar-logo !text-[2rem]">GlobalSewa</h1>
         </Link>
         {navLinks.map(({ route, imagePath, label }, idx) => {
-          console.log(isActive, route, 'route not equal');
           return (
             <Link
               href={route}
